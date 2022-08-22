@@ -5,19 +5,20 @@
  * Return: 0 if no cycle, 1 if there is a cycle
  */
 
-int check_cycle(listint_t *head)
+int check_cycle(listint_t *list)
 {
-	listint_t *first, *last;
+	listint_t *temp1 = NULL, *temp2 = NULL;
 
-	first = head;
-	last = head;
-	while (last != NULL)
+	temp1 = list;
+	temp2 = list;
+
+	while (list)
 	{
-		if (last->next == NULL)
+		temp2 = temp2->next;
+		if (!temp1 || !temp2)
 			return (0);
-		if (last->next == first)
+		if (temp2 == temp1)
 			return (1);
-		last = last->next;
 	}
 	return (0);
 }
