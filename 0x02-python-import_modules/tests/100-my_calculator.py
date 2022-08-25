@@ -4,7 +4,7 @@ if __name__ == "__main__":
      imports all functions from the file calculator_1.py
      and handles basic operations.
     """
-    from sys import argv
+    import sys
     from calculator_1 import add, sub, mul, div
 
     if len(sys.argv) - 1 != 3:
