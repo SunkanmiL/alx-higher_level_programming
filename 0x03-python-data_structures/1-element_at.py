@@ -3,9 +3,9 @@
 
 def element_at(my_list, idx):
     """
-    Gets an element in a list at given index
+    Retrieves an element in a list at given index
     And returns it
     """
-    if idx < 0 || idx >= len(my_list):
+    if idx < 0 or idx >= len(my_list):
         return None
     return my_list[idx]
