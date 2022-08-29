@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-
 def element_at(my_list, idx):
     """
     Retrieves an element in a list at given index
