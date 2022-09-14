@@ -26,9 +26,6 @@ class Square:
         """check errors and setter for size attribute
         Args:
             value: Value to checking errors
-        Raises:
-            TypeError: Exception if size is not an integer
-            ValueError: Exception if size is less than 0
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
