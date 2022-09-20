@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script defines a function that dds 2 integers"""
+"""This script defines a function that adds 2 integers"""
 
 
 def add_integer(a, b=98):
