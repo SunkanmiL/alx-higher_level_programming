@@ -7,7 +7,7 @@ import turtle
 
 class Base:
     """Base class for upcoming classes
-     Attributes:
+    Attributes:
         __nb_objects (int) = number of instatiated Bases
     """
 
@@ -18,7 +18,7 @@ class Base:
         Args:
             id (int): identifier of new Base
         """
-        if id is not None:
+        if id:
             self.id = id
         else:
             Base.__nb_objects += 1
@@ -33,10 +33,9 @@ class Base:
             [] - If None or empty
             Otherwise - JSOn string representation of argument
         """
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        if not list_dictionaries or len(list_dictionaries) == 0:
             return "[]"
-        else:
-            return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -48,7 +47,7 @@ class Base:
         """
         filename = f"{cls.__name__}.json"
         with open(filename, "w") as jfile:
-            if list_objs is None:
+            if not list_objs:
                 jfile.write("[]")
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
@@ -56,16 +55,13 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns list of JSON string representation
+        """returns a list of the JSON representation
         Args:
             json_string (str): string representing a list of dictionaries
         """
-        json_list = []
-        if json_string is None or len(json_string) == 0:
-            return json_list
-        else:
-            json_list = (json.loads(json_string))
-            return json_list
+        if not json_string or json_string == "[]":
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -84,11 +80,12 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """returns a list of instances"""
+        filename = f"{cls.__name__}.json"
         try:
-            with open(cls.__name__ + ".json", "r") as f:
-                return [cls.create(**dictionary) for
-                        dictionary in cls.from_json_string(f.read())]
-        except FileNotFoundError:
+            with open(filename, "r") as jfile:
+                list_dicts = Base.from_json_string(jfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
             return []
 
     @classmethod
@@ -133,7 +130,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Open a window and draw Rectangles and Squares using turtle module
+        """open a window and draw Rectangles and Squares using turtle module
         Args:
             list_rectangles (list): A list of Rectangle objects to draw.
             list_squares (list): A list of Square objects to draw.
@@ -144,7 +141,7 @@ class Base:
         turt.shape("turtle")
 
         turt.color("#ffffff")
-        for rectangle in list_rectangles:
+        for rect in list_rectangles:
             turt.showturtle()
             turt.up()
             turt.goto(rect.x, rect.y)
@@ -157,7 +154,7 @@ class Base:
             turt.hideturtle()
 
         turt.color("#b5e3d8")
-        for square in list_squares:
+        for sq in list_squares:
             turt.showturtle()
             turt.up()
             turt.goto(sq.x, sq.y)
