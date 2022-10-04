@@ -9,7 +9,18 @@ class Rectangle(Base):
     """Rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Initializes attributes"""
+        """Initializes attributes
+
+        Args:
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+            x (int): x-axis coordinate
+            y (int): y-axis coordinate
+            id (int): class identifier inherited from Base
+        Raises:
+            TypeError: if either of width, height, x or y is not an int
+            ValueError: if either of width, height, x or y < 0
+        """
         self.width = width
         self.height = height
         self.x = x
@@ -79,7 +90,16 @@ class Rectangle(Base):
                                                        self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """Assigns an argument to each attribute"""
+        """Assigns an argument to each attribute
+
+        Args:
+            *args (ints): new attribute values where:
+                1st argument should be the id attribute
+                2nd argument should be the width attribute
+                3rd argument should be the height attribute
+                4th argument should be the x attribute
+                5th argument should be the y attribute
+        """
         if args:
             for i in range(len(args)):
                 if i == 0:
