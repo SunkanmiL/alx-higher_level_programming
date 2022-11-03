@@ -14,3 +14,4 @@ LEFT JOIN
 ) AS subdx
 ON subdx.id = gr.id
 WHERE subdx.id IS NULL
+ORDER BY gr.name ASC;
