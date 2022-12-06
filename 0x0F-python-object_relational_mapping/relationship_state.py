@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-# Defines a State model
-# Inherits from SQLAlchemy Base and links to the MySQL table states
+"""
+    Improved files model_city.py and model_state.py
+"""
+import sqlalchemy
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from relationship_city import Base, City
 
 Base = declarative_base()
 
