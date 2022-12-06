@@ -3,7 +3,7 @@
     Python file that contains the class definition of a City
 """
 from sqlalchemy import Column, ForeignKey, Integer, String
-from model_state import Base
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
