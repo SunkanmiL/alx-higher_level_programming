@@ -5,8 +5,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from model_state import Base
 
-Base = declarative_base()
-
 
 class City(Base):
     """Represents a city for a MySQL database
